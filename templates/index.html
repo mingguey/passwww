@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ viewdropsetting }}
+<ul>
+    {% for il in ils %}
+    <li {% if il[0] == '#' %} class="ensable"  {% endif %}>{{ il }} </li>
+    {% endfor %}    
+</ul>
+<pre><code>
+{{ vs }}
+</code></pre>
+<form action="/edit" method="post">
+    <textarea cols="50" rows="6" name="dropset">{{ vs }}</textarea>
+    <input type="submit" value="Edit">
+</form>
 {% endblock content %}
+
+
+

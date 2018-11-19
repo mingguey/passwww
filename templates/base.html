@@ -3,9 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>{% block title %}Proxy網頁過濾{% endblock title %}</title>    
-  </head>
-  <body>
+    <title>{% block title %}Proxy網頁過濾{% endblock title %}</title>
+    <style>
+    pre code { 
+        font-family: monospace;
+        background-color: #eff;
+        border: 1px solid #999;
+        border-left: 6px solid red;
+        display: block;
+        padding: 10px;
+        }
+     
+    </style>
+</head>
+<body>
     <h1>setting now</h1>
     <div>
        {% block content %}{% endblock content %}
@@ -15,5 +26,5 @@
       <li>Disable FB</li>
       <li>Disable .com</li>
     </ul>
-  </body>
+</body>
 </html>
