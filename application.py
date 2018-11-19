@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask import render_template
 
 def creat_app(config=None):
@@ -11,12 +11,17 @@ def creat_app(config=None):
         dropf='dropdomain.txt'
         f=open(dropf)
         l=(f.read()).split('\n')
-        viewdrop=''
-        for il in l:
-            if (il!='' and il[0]=='#'):
-                istring="<li class='disable'>{}</li>".format(il)
-            else:
-                istring="<li class='able'>{}</li>".format(il)
-            viewdrop +=istring
-        return render_template('index.html',viewdropsetting=viewdrop)
+        dropset=""
+        for i in range(len(l)):
+            dropset +=l[i]
+            dropset +='\n'
+        return render_template('index.html',ils=l,vs=dropset)
+    
+    @app.route('/edit', methods=['POST'])
+    def edit():
+        dropset= request.form['dropset']
+        l=[]
+        return  render_template('index.html',ils=l,vs=dropset)
+    
     return app
+
